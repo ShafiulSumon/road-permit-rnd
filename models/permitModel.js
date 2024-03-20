@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const PermitSchema = Schema({
+  status: {
+    type: String,
+    default: "pending", // [pending, approved, rejected]
+  },
   role: {
     type: String,
     required: true,
@@ -35,8 +39,9 @@ const PermitSchema = Schema({
       type: String,
       required: true,
     },
-    recident_id: {
+    resident_id: {
       type: String,
+      default: null,
     },
   },
   permit_details: {
@@ -58,6 +63,7 @@ const PermitSchema = Schema({
     },
     nearby_parking: {
       type: String,
+      default: null,
     },
     vehicle_details: {
       vehicle_type: {

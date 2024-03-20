@@ -1,6 +1,7 @@
 const errorHandler = (err, req, res, next) => {
-  const errorStatus = res.statusCode ? res.statusCode : 500;
-  console.log("status code: ", statusCode);
+  const errorStatus = res.statusCode || 500;
+  console.log("status code: ", errorStatus);
+  res.status(errorStatus);
   switch (errorStatus) {
     case 400:
       res.json({
@@ -33,7 +34,7 @@ const errorHandler = (err, req, res, next) => {
       });
       break;
     default:
-      console.log("-----------no error happens-------------");
+      console.log(`-----------status code [${errorStatus}]-------------`);
       break;
   }
 
