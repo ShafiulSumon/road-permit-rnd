@@ -1,28 +1,17 @@
-const paginationHandler = (limit) => {
-  return (req, res, next) => {
-    var total_record = null;
-    var page_record = req.query.limit || limit;
-    var total_page = null;
-    var current_page = null;
-    var next_page = null;
-    var prev_page = null;
-
-    if (req.query.page) {
-      current_page = parseInt(req.query.page);
-
-      req.pagination = {
-        total_record,
-        page_record,
-        total_page,
-        current_page,
-        next_page,
-        prev_page,
-      };
-    } else {
-      req.pagination = null;
-    }
-    next();
+const paginationHandler = (req, res, next) => {
+  const limit = 2;
+  const page_record = req.query.limit || limit;
+  const current_page = req.query.page || null;
+  console.log(page_record);
+  console.log(current_page);
+  req.pageInfo = {
+    page_record,
+    current_page: parseInt(current_page) ?? null,
   };
+  if (current_page === null) {
+    req.pageInfo = null;
+  }
+  next();
 };
 
 module.exports = paginationHandler;

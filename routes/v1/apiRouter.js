@@ -12,6 +12,6 @@ apiRouter.use("/health", (req, res) => {
 
 apiRouter.post("/records", createRecord);
 
-apiRouter.get("/records?:page", paginationHandler(2), getRecord);
+apiRouter.get("/records?:page", paginationHandler, getRecord);
 
 module.exports = apiRouter;

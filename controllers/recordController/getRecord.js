@@ -1,45 +1,37 @@
 const asyncHandler = require("express-async-handler");
 const Permit = require("../../models/permitModel");
+const pagination = require("../../utils/pagination");
 
 const getRecord = asyncHandler(async (req, res) => {
-  if (req.pagination !== null) {
-    var {
-      total_record,
-      page_record,
-      total_page,
-      current_page,
-      next_page,
-      prev_page,
-    } = req.pagination;
+  const pageInfo = req.pageInfo;
 
-    try {
+  try {
+    if (pageInfo === null) {
+      const allRecords = await Permit.find();
+      res.json({ data: allRecords, pagination: null });
+    } else {
+      const { page_record, current_page } = pageInfo;
       const allRecords = await Permit.find()
         .limit(page_record)
         .skip((current_page - 1) * page_record)
         .exec();
       const counts = await Permit.countDocuments();
 
-      const _page_record = allRecords.length;
-      const _total_page = Math.ceil(counts / page_record);
+      const _pagination = pagination(
+        page_record,
+        allRecords.length,
+        current_page,
+        counts
+      );
 
       res.json({
         data: allRecords,
-        pagination: {
-          total_record: counts,
-          page_record: _page_record,
-          total_page: _total_page,
-          current_page,
-          next_page: current_page >= _total_page ? null : current_page + 1,
-          prev_page: current_page <= 1 ? null : current_page - 1,
-        },
+        pagination: _pagination,
       });
-    } catch (err) {
-      res.status(500);
-      throw new Error(err);
     }
-  } else {
-    const allRecords = await Permit.find();
-    res.json({ data: allRecords, pagination: null });
+  } catch (err) {
+    res.status(500);
+    throw new Error(err);
   }
 });
 
