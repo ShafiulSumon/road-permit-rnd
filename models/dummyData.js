@@ -779,3 +779,144 @@ const utchas = {
     },
   ],
 };
+
+const hi = {
+  serviceForms: [
+    {
+      code: "RUP001",
+      isEnabled: true,
+      title: "Road User Permit",
+      header: "Road User Permit",
+      subHeader:
+        "Select Applicant Type and fill out the fields for your permit",
+      icon: "./car.png",
+      type: "",
+      serviceFormSections: [
+        {
+          sectionName: "Application Details",
+          subSections: [
+            {
+              key: "applicantInfo",
+              name: "Applicant info",
+              isExpanded: true,
+              fields: [
+                {
+                  key: "name",
+                  isVisible: false,
+                  type: "text",
+                  title: "Name",
+                  placeHolderText: "Your Name",
+                  isRequired: true,
+                  regex: "",
+                },
+                {
+                  key: "applicantType",
+                  isVisible: false,
+                  type: "dropdownMenu",
+                  title: "Applicant Type",
+                  placeHolderText: "Select Applicant Type",
+                  items: [
+                    {
+                      value: "Individual",
+                      DependentFieldsKeys: ["email"],
+                    },
+                    {
+                      value: "Company",
+                    },
+                  ],
+                  isRequired: true,
+                  regex: "",
+                },
+                {
+                  key: "email",
+                  isVisible: false,
+                  type: "text",
+                  title: "Email",
+                  placeHolderText: "Your Email",
+                  isRequired: true,
+                  regex: "",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          sectionName: "Vehicle Details",
+          subSections: [
+            {
+              key: "vehicleInfo",
+              name: "Vehicle info",
+              isExpanded: true,
+              fields: [
+                {
+                  key: "vehicleType",
+                  isVisible: false,
+                  type: "checkBox",
+                  title: "Vehicle Type",
+                  placeHolderText: "Select Vehicle Type",
+                  items: [
+                    {
+                      value: "Car",
+                    },
+                    {
+                      value: "Truck",
+                    },
+                  ],
+                  isRequired: true,
+                  regex: "",
+                },
+                {
+                  key: "vehiclePlateNumber",
+                  isVisible: false,
+                  type: "text",
+                  title: "Vehicle Plate Number",
+                  placeHolderText: "Your Vehicle Plate Number",
+                  isRequired: true,
+                  regex: "",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          sectionName: "Payment Details",
+          subSections: [
+            {
+              key: "paymentInfo",
+              name: "Payment info",
+              isExpanded: true,
+              fields: [
+                {
+                  key: "paymentMethod",
+                  isVisible: false,
+                  type: "dropdownMenu",
+                  title: "Payment Method",
+                  placeHolderText: "Select Payment Method",
+                  items: [
+                    {
+                      value: "Credit Card",
+                    },
+                    {
+                      value: "Debit Card",
+                    },
+                  ],
+                  isRequired: true,
+                  regex: "",
+                },
+                {
+                  key: "cardNumber",
+                  isVisible: false,
+                  type: "text",
+                  title: "Card Number",
+                  placeHolderText: "Your Card Number",
+                  isRequired: true,
+                  regex: "",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
