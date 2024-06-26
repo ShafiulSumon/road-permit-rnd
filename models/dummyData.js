@@ -920,3 +920,116 @@ const hi = {
     },
   ],
 };
+
+const final = {
+  serviceForm: {
+    code: "J56",
+    isEnabled: true,
+    title: "Testing title",
+    header: "Header 1",
+    subHeader: "sub header",
+    icon: "Picture1.png",
+    buttonType: "button",
+    sections: [
+      {
+        sectionName: "Section 1",
+        subSections: [
+          {
+            key: "",
+            name: "",
+            fields: [
+              {
+                fieldKey: "s1 n2",
+                dataType: "Date (MM/DD/YYYY)",
+                fieldTitle: "s1 n2",
+                placeHolderText: "s1 n2",
+                isRequired: true,
+                regex: "Alphanumeric with Special Characters",
+                dependancyWith: "",
+                dependancyValue: "",
+                withPayment: false,
+                paymentAmount: null, // double
+                itemList: [], // [String]
+                errorMessage: "",
+              },
+            ],
+          },
+          {
+            key: "sub 2",
+            name: "sub 2",
+            fields: [
+              {
+                key: "name 2",
+                dataType: "Text box",
+                title: "name 2",
+                placeHolderText: "name 2",
+                isRequired: false,
+                regex: "Numbers",
+                dependancyWith: "",
+                dependancyValue: "",
+                withPayment: false,
+                paymentAmount: null,
+                itemList: [],
+              },
+              {
+                key: "name 1",
+                dataType: "Text box",
+                title: "name 1",
+                placeHolderText: "name 1",
+                isRequired: true,
+                regex: "Alphabet (Filipino Alphabet)",
+                dependancyWith: "",
+                dependancyValue: "",
+                withPayment: false,
+                paymentAmount: 100,
+                itemList: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        sectionName: "section 2",
+        subSections: [
+          {
+            key: "sub section of section 2",
+            name: "sub section of section 2",
+            fields: [
+              {
+                key: "name 2",
+                dataType: "Radio",
+                title: "name 2",
+                placeHolderText: "name 2",
+                isRequired: false,
+                regex: "Alphabet (Filipino Alphabet)",
+                dependancyWith: "",
+                dependancyValue: "",
+                withPayment: false,
+                paymentAmount: null,
+                itemList: [],
+              },
+              {
+                key: "name 1",
+                dataType: "Radio",
+                title: "name 1",
+                placeHolderText: "name 1",
+                isRequired: true,
+                regex: "Numbers",
+                dependancyWith: "",
+                dependancyValue: "",
+                withPayment: false,
+                paymentAmount: null,
+                itemList: [],
+              },
+            ],
+          },
+          {
+            key: "sub2",
+            name: "sub2",
+            fields: [],
+          },
+        ],
+      },
+    ],
+  },
+};
