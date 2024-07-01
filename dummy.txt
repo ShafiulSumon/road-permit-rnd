@@ -1,0 +1,131 @@
+{
+  "serviceForm": {
+    "code": "J56",
+    "isEnabled": true,
+    "title": "Testing title",
+    "header": "Header 1",
+    "subHeader": "sub header",
+    "icon": "Picture1.png",
+    "buttonType": "button",
+    "sections": [
+      {
+        "sectionName": "Section 1",
+        "subSections": [
+          {
+            "key": "",
+            "name": "",
+            "fields": [
+              {
+                "fieldKey": "s1 n2",
+                "dataType": "Date (MM/DD/YYYY)",
+                "fieldTitle": "s1 n2",
+                "placeHolderText": "s1 n2",
+                "isRequired": true,
+                "regex": {
+                   "regexKey": "name_regex",
+                   "regexValue": "^[A-Za-z]+$",
+                   "errorMessage": "First name must contain only letters"
+                },
+                "dependancyWith": "",
+                "dependancyValue": "",
+                "withPayment": false,
+                "paymentAmount": null,
+                "itemList": []
+              }
+            ]
+          },
+          {
+            "key": "sub 2",
+            "name": "sub 2",
+            "fields": [
+              {
+                "fieldKey": "name 2",
+                "dataType": "Text box",
+                "fieldTitle": "name 2",
+                "placeHolderText": "name 2",
+                "isRequired": false,
+                "regex": {
+                   "regexKey": "name_regex",
+                   "regexValue": "^[A-Za-z]+$",
+                   "errorMessage": "Last name must contain only letters"
+                },
+                "dependancyWith": "",
+                "dependancyValue": "",
+                "withPayment": false,
+                "paymentAmount": null,
+                "itemList": []
+              },
+              {
+                "fieldKey": "name 1",
+                "dataType": "Text box",
+                "fieldTitle": "name 1",
+                "placeHolderText": "name 1",
+                "isRequired": true,
+                "regex": {
+                   "regexKey": "email_regex",
+                   "regexValue": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                   "errorMessage": "Invalid email format"
+                },
+                "dependancyWith": "",
+                "dependancyValue": "",
+                "withPayment": false,
+                "paymentAmount": 100,
+                "itemList": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "sectionName": "section 2",
+        "subSections": [
+          {
+            "key": "sub section of section 2",
+            "name": "sub section of section 2",
+            "fields": [
+              {
+                "fieldKey": "name 2",
+                "dataType": "Radio",
+                "fieldTitle": "name 2",
+                "placeHolderText": "name 2",
+                "isRequired": false,
+                "regex": {
+                   "regexKey": "name_regex",
+                   "regexValue": "^[A-Za-z]+$",
+                   "errorMessage": "First name must contain only letters"
+                },
+                "dependancyWith": "",
+                "dependancyValue": "",
+                "withPayment": false,
+                "paymentAmount": null,
+                "itemList": []
+              },
+              {
+                "fieldKey": "name 1",
+                "dataType": "Radio",
+                "fieldTitle": "name 1",
+                "placeHolderText": "name 1",
+                "isRequired": true,
+                "regex": {
+                   "regexKey": "name_regex",
+                   "regexValue": "^[A-Za-z]+$",
+                   "errorMessage": "Last name must contain only letters"
+                },
+                "dependancyWith": "",
+                "dependancyValue": "",
+                "withPayment": false,
+                "paymentAmount": null,
+                "itemList": []
+              }
+            ]
+          },
+          {
+            "key": "sub2",
+            "name": "sub2",
+            "fields": []
+          }
+        ]
+      }
+    ]
+  }
+}

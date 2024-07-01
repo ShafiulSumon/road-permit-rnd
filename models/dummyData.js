@@ -939,18 +939,17 @@ const final = {
             name: "",
             fields: [
               {
-                fieldKey: "s1 n2",
+                key: "s1 n2",
                 dataType: "Date (MM/DD/YYYY)",
-                fieldTitle: "s1 n2",
+                title: "s1 n2",
                 placeHolderText: "s1 n2",
                 isRequired: true,
                 regex: "Alphanumeric with Special Characters",
                 dependancyWith: "",
                 dependancyValue: "",
                 withPayment: false,
-                paymentAmount: null, // double
-                itemList: [], // [String]
-                errorMessage: "",
+                paymentAmount: null,
+                itemList: [],
               },
             ],
           },

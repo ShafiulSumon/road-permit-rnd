@@ -34,7 +34,13 @@ const errorHandler = (err, req, res, next) => {
       });
       break;
     default:
-      console.log(`-----------status code [${errorStatus}]-------------`);
+      console.log(
+        `-----------Unknown Error, status code [${errorStatus}]-------------`
+      );
+      res.json({
+        title: "Unknown Error",
+        message: `Unknown error with status code ${errorStatus}`,
+      });
       break;
   }
 

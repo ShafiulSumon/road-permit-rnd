@@ -3,6 +3,8 @@ const notFoundHandler = require("../../middlewares/notFoundHandler");
 const createRecord = require("../../controllers/recordController/createRecord");
 const getRecord = require("../../controllers/recordController/getRecord");
 const paginationHandler = require("../../middlewares/paginationHandler");
+const getServiceForms = require("../../controllers/recordController/getServiceForms");
+const getSpecificForm = require("../../controllers/recordController/getSpecificForm");
 
 const apiRouter = express.Router();
 
@@ -13,5 +15,9 @@ apiRouter.use("/health", (req, res) => {
 apiRouter.post("/records", createRecord);
 
 apiRouter.get("/records?:page", paginationHandler, getRecord);
+
+// for utchas
+apiRouter.get("/serviceforms", getServiceForms);
+apiRouter.get("/serviceForm/:code", getSpecificForm);
 
 module.exports = apiRouter;
