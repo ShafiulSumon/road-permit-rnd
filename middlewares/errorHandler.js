@@ -1,5 +1,5 @@
 const errorHandler = (err, req, res, next) => {
-  const errorStatus = res.statusCode || 500;
+  const errorStatus = err.statusCode || 500;
   console.log("status code: ", errorStatus);
   res.status(errorStatus);
   switch (errorStatus) {
@@ -22,7 +22,7 @@ const errorHandler = (err, req, res, next) => {
       });
       break;
     case 404:
-      res.josn({
+      res.json({
         title: "Not Found",
         message: err.message,
       });
@@ -43,8 +43,6 @@ const errorHandler = (err, req, res, next) => {
       });
       break;
   }
-
-  next();
 };
 
 module.exports = errorHandler;

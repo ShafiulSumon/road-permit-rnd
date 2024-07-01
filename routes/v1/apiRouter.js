@@ -18,6 +18,6 @@ apiRouter.get("/records?:page", paginationHandler, getRecord);
 
 // for utchas
 apiRouter.get("/serviceforms", getServiceForms);
-apiRouter.get("/serviceForm/:code", getSpecificForm);
+apiRouter.get("/serviceform?:code", getSpecificForm);
 
 module.exports = apiRouter;

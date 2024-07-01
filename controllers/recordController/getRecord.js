@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Permit = require("../../models/permitModel");
 const pagination = require("../../utils/pagination");
 
-const getRecord = asyncHandler(async (req, res) => {
+const getRecord = asyncHandler(async (req, res, next) => {
   const pageInfo = req.pageInfo;
 
   try {
@@ -30,8 +30,9 @@ const getRecord = asyncHandler(async (req, res) => {
       });
     }
   } catch (err) {
-    res.status(500);
-    throw new Error(err);
+    const error = new Error("Data fetch failed!");
+    error.statusCode = 500;
+    next(error);
   }
 });
 

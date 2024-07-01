@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Permit = require("../../models/permitModel");
 
-const getServiceForms = asyncHandler(async (req, res) => {
+const getServiceForms = asyncHandler(async (req, res, next) => {
   try {
     const allServiceForms = await Permit.find();
 
@@ -24,8 +24,9 @@ const getServiceForms = asyncHandler(async (req, res) => {
       serviceForms: customServiceForms,
     });
   } catch (err) {
-    res.status(500);
-    throw new Error(err);
+    const error = new Error("Data fetch failed!");
+    error.statusCode = 500;
+    next(error);
   }
 });
 

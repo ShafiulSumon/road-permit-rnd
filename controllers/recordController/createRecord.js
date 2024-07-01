@@ -104,87 +104,7 @@ const { Role, RecordStatus } = require("../../constants");
 //   });
 // });
 
-const createRecord = asyncHandler(async (req, res) => {
-  // const {
-  //   serviceForm: {
-  //     code,
-  //     isEnabled,
-  //     title,
-  //     header,
-  //     subHeader,
-  //     icon,
-  //     buttonType,
-  //     sections: [
-  //       {
-  //         sectionName,
-  //         subSections: [
-  //           {
-  //             key,
-  //             name,
-  //             fields: [
-  //               {
-  //                 fieldKey,
-  //                 dataType,
-  //                 fieldTitle,
-  //                 placeHolderText,
-  //                 isRequired,
-  //                 regex: { regexKey, regexValue, errorMessage },
-  //                 dependancyWith,
-  //                 dependancyValue,
-  //                 withPayment,
-  //                 paymentAmount,
-  //                 itemList: [],
-  //               },
-  //             ],
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   },
-  // } = req.body;
-
-  // const roadPermit = await Permit.create({
-  //   serviceForm: {
-  //     code,
-  //     isEnabled,
-  //     title,
-  //     header,
-  //     subHeader,
-  //     icon,
-  //     buttonType,
-  //     sections: [
-  //       {
-  //         sectionName,
-  //         subSections: [
-  //           {
-  //             key,
-  //             name,
-  //             fields: [
-  //               {
-  //                 fieldKey,
-  //                 dataType,
-  //                 fieldTitle,
-  //                 placeHolderText,
-  //                 isRequired,
-  //                 regex: {
-  //                   regexKey,
-  //                   regexValue,
-  //                   errorMessage,
-  //                 },
-  //                 dependancyWith,
-  //                 dependancyValue,
-  //                 withPayment,
-  //                 paymentAmount,
-  //                 itemList: [],
-  //               },
-  //             ],
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   },
-  // });
-
+const createRecord = asyncHandler(async (req, res, next) => {
   const { serviceForm } = req.body;
 
   try {
@@ -194,8 +114,9 @@ const createRecord = asyncHandler(async (req, res) => {
       message: "Data saved successfully!",
     });
   } catch (err) {
-    res.status(500);
-    throw new Error(err);
+    const error = new Error("Save operation failed!");
+    error.statusCode = 500;
+    next(error);
   }
 });
 
