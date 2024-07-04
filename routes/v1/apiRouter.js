@@ -5,6 +5,8 @@ const getRecord = require("../../controllers/recordController/getRecord");
 const paginationHandler = require("../../middlewares/paginationHandler");
 const getServiceForms = require("../../controllers/recordController/getServiceForms");
 const getSpecificForm = require("../../controllers/recordController/getSpecificForm");
+const submitForm = require("../../controllers/formController/submitForm");
+const getForms = require("../../controllers/formController/getForms");
 
 const apiRouter = express.Router();
 
@@ -14,10 +16,16 @@ apiRouter.use("/health", (req, res) => {
 
 apiRouter.post("/records", createRecord);
 
-apiRouter.get("/records?:page", paginationHandler, getRecord);
+// apiRouter.get("/records?:page", paginationHandler, getRecord);
 
 // for utchas
 apiRouter.get("/serviceforms", getServiceForms);
 apiRouter.get("/serviceform?:code", getSpecificForm);
+apiRouter.post("/submitform", submitForm);
+// apiRouter.get(
+//   "/getforms?:refNo&:formTitle&:status&:createdOn&:dueDate&:limit&:page",
+//   getForms
+// );
+apiRouter.get("/getforms", paginationHandler, getForms);
 
 module.exports = apiRouter;

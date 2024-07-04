@@ -1,7 +1,7 @@
 const paginationHandler = (req, res, next) => {
-  const limit = 2;
+  const limit = 5;
   const page_record = req.query.limit || limit;
-  const current_page = req.query.page || null;
+  const current_page = req.query.page || 1;
   console.log(page_record);
   console.log(current_page);
   req.pageInfo = {
