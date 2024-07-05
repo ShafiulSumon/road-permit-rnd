@@ -8,6 +8,7 @@ const getSpecificForm = require("../../controllers/recordController/getSpecificF
 const submitForm = require("../../controllers/formController/submitForm");
 const getForms = require("../../controllers/formController/getForms");
 const getSingleForm = require("../../controllers/formController/getSingleForm");
+const getServiceFormTitles = require("../../controllers/recordController/getServiceFormTitles");
 
 const apiRouter = express.Router();
 
@@ -21,6 +22,7 @@ apiRouter.post("/records", createRecord);
 
 // for utchas
 apiRouter.get("/serviceforms", getServiceForms);
+apiRouter.get("/serviceformtypes", getServiceFormTitles);
 apiRouter.get("/serviceform?:code", getSpecificForm);
 apiRouter.post("/submitform", submitForm);
 // apiRouter.get(

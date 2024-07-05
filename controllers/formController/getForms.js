@@ -1,16 +1,16 @@
 const asyncHandler = require("express-async-handler");
 const Forms = require("../../models/formModel");
-const pagination = require("../../utils/pagination");
+const pagination = require("../../utils/customPagination");
 
 const getForms = asyncHandler(async (req, res, next) => {
   const { refNo, formTitle, status, createdOn, dueDate } = req.query;
-  const { page_record, current_page } = req.pageInfo;
+  const { limit, current_page } = req.pageInfo;
   var result;
   try {
     if (!refNo && !formTitle && !status && !createdOn && !dueDate) {
       result = await Forms.find()
-        .limit(page_record)
-        .skip((current_page - 1) * page_record)
+        .limit(limit)
+        .skip((current_page - 1) * limit)
         .exec();
     } else {
       var filter = {};
@@ -21,17 +21,18 @@ const getForms = asyncHandler(async (req, res, next) => {
       if (createdOn) filter.createdOn = createdOn;
       if (dueDate) filter.dueDate = dueDate;
       result = await Forms.find(filter)
-        .limit(page_record)
-        .skip((current_page - 1) * page_record)
+        .limit(limit)
+        .skip((current_page - 1) * limit)
         .exec();
     }
     const count = await Forms.countDocuments();
-    const _pagination = pagination(
-      page_record,
-      result.length,
-      current_page,
-      count
-    );
+    const _pagination = pagination(limit, result.length, current_page, count);
+
+    // const _customPagination = customPagination(
+    //   result.length,
+    //   current_page,
+    //   limit
+    // );
 
     res.json({
       data: result,

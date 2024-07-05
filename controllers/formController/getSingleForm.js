@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Forms = require("../../models/formModel");
-const pagination = require("../../utils/pagination");
+const pagination = require("../../utils/customPagination");
 const decodeData = require("../../utils/decodeData");
 
 const getSingleForm = asyncHandler(async (req, res, next) => {

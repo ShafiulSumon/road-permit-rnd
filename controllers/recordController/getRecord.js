@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Permit = require("../../models/permitModel");
-const pagination = require("../../utils/pagination");
+const pagination = require("../../utils/customPagination");
 
 const getRecord = asyncHandler(async (req, res, next) => {
   const pageInfo = req.pageInfo;
