@@ -6,6 +6,7 @@ const getForms = asyncHandler(async (req, res, next) => {
   const { refNo, formTitle, status, createdOn, dueDate } = req.query;
   const { limit, current_page } = req.pageInfo;
   var result;
+  var filter = {};
   try {
     if (!refNo && !formTitle && !status && !createdOn && !dueDate) {
       result = await Forms.find()
@@ -13,7 +14,7 @@ const getForms = asyncHandler(async (req, res, next) => {
         .skip((current_page - 1) * limit)
         .exec();
     } else {
-      var filter = {};
+      
       if (refNo) filter.refNo = refNo;
       if (formTitle)
         filter.formTitle = { $regex: RegExp(`^${formTitle}`, "i") };
@@ -24,8 +25,9 @@ const getForms = asyncHandler(async (req, res, next) => {
         .limit(limit)
         .skip((current_page - 1) * limit)
         .exec();
+
     }
-    const count = await Forms.countDocuments();
+    const count = await Forms.find(filter).count()
     const _pagination = pagination(limit, result.length, current_page, count);
 
     // const _customPagination = customPagination(

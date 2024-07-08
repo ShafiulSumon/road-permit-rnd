@@ -30,7 +30,7 @@ apiRouter.post("/submitform", submitForm);
 //   "/getforms?:refNo&:formTitle&:status&:createdOn&:dueDate&:limit&:page",
 //   getForms
 // );
-apiRouter.get("/getforms", paginationHandler, getForms);
+apiRouter.get("/getforms", paginationHandler, getForms);// working route
 apiRouter.get("/getsingleform", getSingleForm);
 apiRouter.put("/editsingleform", editSingleForm);
 
