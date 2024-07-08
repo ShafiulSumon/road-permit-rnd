@@ -9,6 +9,7 @@ const submitForm = require("../../controllers/formController/submitForm");
 const getForms = require("../../controllers/formController/getForms");
 const getSingleForm = require("../../controllers/formController/getSingleForm");
 const getServiceFormTitles = require("../../controllers/recordController/getServiceFormTitles");
+const editSingleForm = require("../../controllers/formController/editSingleForm");
 
 const apiRouter = express.Router();
 
@@ -31,5 +32,6 @@ apiRouter.post("/submitform", submitForm);
 // );
 apiRouter.get("/getforms", paginationHandler, getForms);
 apiRouter.get("/getsingleform", getSingleForm);
+apiRouter.put("/editsingleform", editSingleForm);
 
 module.exports = apiRouter;
